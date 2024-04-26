@@ -5,6 +5,9 @@ import {
   getTrendingMovies,
   getUpComingMovies,
   getMovieCredits,
+  getPersonDetail,
+  getMovieCreditsPerson,
+  getSearhMovies,
 } from '../api';
 import {
   setMovieDetailReducer,
@@ -12,6 +15,9 @@ import {
   setTrendingState,
   setUpComingState,
   setMovieCreditReducer,
+  setPersonDetailReducer,
+  setPersonMovieCreditsReducer,
+  setSearchResultsReducer,
 } from './movieSlice';
 
 export const GetTrendingMovies = createAsyncThunk(
@@ -50,5 +56,29 @@ export const GetMovieCretit = createAsyncThunk(
     const response = await getMovieCredits(id);
 
     dispatch(setMovieCreditReducer(response.cast));
+  },
+);
+export const GetPersonDetail = createAsyncThunk(
+  'movie/getPersonDetail',
+  async (id, {dispatch}) => {
+    const response = await getPersonDetail(id);
+
+    dispatch(setPersonDetailReducer(response));
+  },
+);
+export const GetPersonMovieCredits = createAsyncThunk(
+  'movie/getMovieCreditsPerson',
+  async (id, {dispatch}) => {
+    const response = await getMovieCreditsPerson(id);
+
+    dispatch(setPersonMovieCreditsReducer(response.cast));
+  },
+);
+export const GetSearchResuts = createAsyncThunk(
+  'movie/getSearhMovies',
+  async (id, {dispatch}) => {
+    const response = await getSearhMovies(id);
+
+    dispatch(setSearchResultsReducer(response.results));
   },
 );

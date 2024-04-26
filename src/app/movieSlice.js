@@ -6,6 +6,9 @@ const initialState = {
   nowPlaying: [],
   movieDetail: {},
   movieCredits: [],
+  personDetail: {},
+  personMovieCredits: [],
+  searchResults: [],
   loading: false,
   error: false,
 };
@@ -30,12 +33,19 @@ const movieSlice = createSlice({
     setMovieCreditReducer: (state, action) => {
       state.movieCredits = action.payload;
     },
+    setPersonMovieCreditsReducer: (state, action) => {
+      state.personMovieCredits = action.payload;
+    },
 
     setLoadingState: (state, action) => {
       state.loading = action.payload;
     },
-    setErrorState: (state, action) => {
-      state.error = action.payload;
+
+    setPersonDetailReducer: (state, action) => {
+      state.personDetail = action.payload;
+    },
+    setSearchResultsReducer: (state, action) => {
+      state.searchResults = action.payload;
     },
   },
 });
@@ -48,6 +58,9 @@ export const {
   setNowPlayingReducer,
   setMovieDetailReducer,
   setMovieCreditReducer,
+  setPersonDetailReducer,
+  setPersonMovieCreditsReducer,
+  setSearchResultsReducer,
 } = movieSlice.actions;
 
 export default movieSlice.reducer;

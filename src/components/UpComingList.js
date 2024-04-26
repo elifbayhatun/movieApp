@@ -10,6 +10,7 @@ import React from 'react';
 import {Color} from '../styles/color';
 import {useNavigation} from '@react-navigation/native';
 import {MOVIE} from '../utils/routes';
+import PersonCard from './PersonCard';
 
 const UpComingList = ({title, data}) => {
   const {width, height} = Dimensions.get('screen');

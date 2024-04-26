@@ -15,11 +15,14 @@ import {getmoviedetail, getmoviecredits} from '../app/movieSelector';
 import {GetMovieCretit, GetMovieDetail} from '../app/movieAction';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {Color} from '../styles/color';
+import {useNavigation} from '@react-navigation/native';
+import {PERSON} from '../utils/routes';
 
 const MovieScreen = () => {
   const {id} = useRoute().params.id;
   const dispatch = useDispatch();
   const {width, height} = Dimensions.get('window');
+  const navigation = useNavigation();
 
   useEffect(() => {
     dispatch(GetMovieDetail(id));
@@ -75,7 +78,8 @@ const MovieScreen = () => {
             data={movieCretitSelector}
             renderItem={({item}) => {
               return (
-                <TouchableOpacity>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate(PERSON, {id: item.id})}>
                   <Image
                     source={{
                       uri: `https://image.tmdb.org/t/p/w500${item.profile_path}`,
@@ -93,8 +97,8 @@ const MovieScreen = () => {
                         color: Color.ORANGE,
                       }}>
                       {item.name.length > 10
-                        ? item.name.slice(0, 10) + '...'
-                        : item.name}
+                        ? item?.name.slice(0, 10) + '...'
+                        : item?.name}
                     </Text>
                     <Text
                       style={{
@@ -103,8 +107,8 @@ const MovieScreen = () => {
                         left: 10,
                       }}>
                       {item.character.length > 10
-                        ? item.character.slice(0, 10) + '...'
-                        : item.character}
+                        ? item?.character.slice(0, 10) + '...'
+                        : item?.character}
                     </Text>
                   </View>
                 </TouchableOpacity>

@@ -22,3 +22,15 @@ export const getmoviecredits =
   () =>
   ({movie: {movieCredits}}) =>
     movieCredits;
+export const getpersondetail =
+  () =>
+  ({movie: {personDetail}}) =>
+    personDetail;
+export const getpersonmoviecredits =
+  () =>
+  ({movie: {personMovieCredits}}) =>
+    personMovieCredits;
+export const getsearchresults =
+  () =>
+  ({movie: {searchResults}}) =>
+    searchResults;
